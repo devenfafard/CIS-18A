@@ -1,31 +1,28 @@
-import java.util.Observable;
-import java.util.Observer;
+package Assignment2.src;
 public class Subscriber implements Observer
-{	//pg 70-74
-	String address = null;
-	String message = null;
+{	
+	private Subject subscriberData = null;
+	private String address = null;
+	private String message = null;
 	boolean recievedMessage = false;
-	Observable data = null;
-	
-	public Subscriber()
-	{
 		
+	public Subscriber(Subject _subscriberData, String _address)
+	{
+		this.subscriberData = _subscriberData;
+		this.address = _address;
+		recievedMessage = false;
+		subscriberData.registerObserver(this);
 	}
 	
-	public Subscriber (String _address, Observable _data)
+	public void update(String _message) 
 	{
-		this.address = _address;
-		this.data = _data;
-		data.addObserver(this);
+		this.message = _message;
+		recievedMessage = true;		
 	}
-
-	public void update(Observable _data, String _message) 
+	
+	public String getAddress()
 	{
-		if (_data instanceof SubscriberData) 
-		{
-			SubscriberData subData = (SubscriberData)obs;
-			this.temperature = weatherData.getTemperature();
-			this.humidity = weatherData.getHumidity();
-			display();
-		}
+		return this.address;
+	}
 }
+	
