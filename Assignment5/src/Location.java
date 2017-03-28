@@ -14,4 +14,7 @@ public class Location
 	public void moveRight() { x++; }
 	public void moveUp() 	{ y++; }
 	public void moveDown() 	{ y--; }
+	public int getX() { return x; }
+	public int getY() { return y; }
+	
 }

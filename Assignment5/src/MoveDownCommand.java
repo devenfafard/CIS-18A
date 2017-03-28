@@ -9,6 +9,7 @@ public class MoveDownCommand implements Command
 	public void execute()
 	{
 		currentLocation.moveDown();
+		
 	}
 	
 	public void undo()

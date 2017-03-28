@@ -1,14 +1,18 @@
-
+import java.util.Stack;
 public class MovementInvoker
 {
-	Location currentLocation = new Location();
-	MoveLeftCommand xNegCommand = new MoveLeftCommand(currentLocation);
-	MoveRightCommand xPosCommand = new MoveRightCommand(currentLocation);
-	MoveUpCommand yPosCommand = new MoveUpCommand(currentLocation);
-	MoveDownCommand yNegCommand = new MoveDownCommand(currentLocation);
+	Stack previousCommands = new Stack();
+	Command previousCommand = null;
+	
+	public void move(Command com)
+	{
+		com.execute();
+		previousCommands.push(com);
+	}
 	
 	public void undoMovement()
 	{
-		
+		((Command) previousCommands.lastElement()).undo();
+		previousCommands.pop();
 	}
 }
