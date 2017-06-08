@@ -1,7 +1,8 @@
 public class Pawn extends Piece
 {
-	public Pawn()
+	public Pawn(String color)
 	{
-		piece = "P";
+		super(color);
+		name = "P|";
 	}
 }

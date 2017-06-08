@@ -1,7 +1,8 @@
 public class Castle extends Piece
 {
-	public Castle()
+	public Castle(String color)
 	{
-		piece = "C";
+		super (color);
+		name = "C|";
 	}
 }

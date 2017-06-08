@@ -1,10 +1,12 @@
 
 public class Main 
 {
+	@SuppressWarnings({ "static-access", "unused" })
 	public static void main(String[] args)
 	{
 		GameManager gameManager = new GameManager().getInstance();
-		Board board = new Board();
+		
+		GUIManager board = new GUIManager();
 		
 		gameManager.initGame();
 	}

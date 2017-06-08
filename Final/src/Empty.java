@@ -1,12 +1,13 @@
 
 public class Empty extends Piece
 {
-	public Empty()
+	public Empty(String color)
 	{
-
-		if (this.isWhite)
-			this.name = " _ ";
-		else
-			this.name = " # ";
-	} 
+		super(color);
+	}
+	
+	public String getName()
+	{
+		return this.name;
+	}
 }

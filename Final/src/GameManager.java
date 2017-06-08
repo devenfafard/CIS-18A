@@ -4,8 +4,7 @@ public class GameManager implements Subject
 {
 	private static GameManager instance = null;
 	private ArrayList<Observer> observers = new ArrayList<Observer>();
-	String gridSpaces[] = new String[64];
-	Piece gridPieces[] = new Piece[64];
+	Piece gridSpaces[] = new Piece[64];
 	
 	/*Singleton implementation.*/ 
 	public GameManager() { }
@@ -36,14 +35,26 @@ public class GameManager implements Subject
 		Bishop bBishop = new Bishop();
 		bBishop.setColor(false);*/
 		
-		King king = new King();
-		Queen queen = new Queen();
-		Bishop bishop = new Bishop();
-		Knight knight = new Knight();
-		Castle castle = new Castle();
-		Pawn pawn = new Pawn();
+		King wKing = new King("white");
+		King bKing  = new King("black");
+		
+		Queen wQueen = new Queen("white");
+		Queen bQueen = new Queen("black");
+		
+		Bishop wBishop = new Bishop("white");
+		Bishop bBishop = new Bishop("black");
+		
+		Knight wKnight = new Knight("white");
+		Knight bKnight = new Knight("black");
+		
+		Castle wCastle = new Castle("white");
+		Castle bCastle = new Castle("black");
+		
+		Pawn wPawn = new Pawn("white");
+		Pawn bPawn = new Pawn("black");
+		
 
-		/*Converting pieces to strings.*/
+		/*Converting pieces to strings.
 		String wKi = new WhiteDecorator(king).getFullName();
 		String bKi = new BlackDecorator(king).getFullName();
 		String wQ = new WhiteDecorator(queen).getFullName();
@@ -55,47 +66,45 @@ public class GameManager implements Subject
 		String wC = new WhiteDecorator(castle).getFullName();
 		String bC = new BlackDecorator(castle).getFullName();
 		String wP = new WhiteDecorator(pawn).getFullName();
-		String bP = new BlackDecorator(pawn).getFullName();
+		String bP = new BlackDecorator(pawn).getFullName();*/
 		
 		/*Adding white pieces to the board.*/
-		gridSpaces[0] = " " + wC;
-		gridSpaces[1] = " " + wK;
-		gridSpaces[2] = " " + wB;
-		gridSpaces[3] = wKi;
-		gridSpaces[4] = " " + wQ;
-		gridSpaces[5] = " " + wB;
-		gridSpaces[6] = " " + wK;
-		gridSpaces[7] = " " + wC;
+		gridSpaces[0] = bCastle;
+		gridSpaces[1] = bKnight;
+		gridSpaces[2] = bBishop;
+		gridSpaces[3] = bKing;
+		gridSpaces[4] = bQueen;
+		gridSpaces[5] = bBishop;
+		gridSpaces[6] = bKnight;
+		gridSpaces[7] = bCastle;
 		for (int i = 8; i < 16; i++)
 		{
-			gridSpaces[i] = " " + wP;
+			gridSpaces[i] = bPawn;
 		}
 		
 		/*Adding all of the empty spaces to the board.*/
-		for (int i = 16; i < 47; i++)
+		for (int i = 16; i < 47; i+= 2)
 		{
-			if (i % 2 == 0)
-				gridSpaces[i] = "  #  ";
-			else
-				gridSpaces[i] = "  _  ";
+			gridSpaces[i] = new Empty("white");
+		}
+		for (int i = 16; i < 47; i+=1)
+		{
+			gridSpaces[i] = new Empty("black");
 		}
 		
 		/*Adding black pieces to the board.*/
 		for (int i = 48; i < 56; i++)
 		{
-			gridSpaces[i] = " " + bP;
+			gridSpaces[i] = wPawn;
 		}
-		gridSpaces[56] = " " + bC;
-		gridSpaces[57] = " " + bK;
-		gridSpaces[58] = " " + bB;
-		gridSpaces[59] = bKi;
-		gridSpaces[60] = " " + bQ;
-		gridSpaces[61] = " " + bB;
-		gridSpaces[62] = " " + bK;
-		gridSpaces[63] = " " + bC;
-		
-		//////////Config Piece array//////////
-		gridPieces[0].
+		gridSpaces[56] = wCastle;
+		gridSpaces[57] = wKnight;
+		gridSpaces[58] = wBishop;
+		gridSpaces[59] = wKing;
+		gridSpaces[60] = wQueen;
+		gridSpaces[61] = wBishop;
+		gridSpaces[62] = wKnight;
+		gridSpaces[63] = wCastle;
 		
 		notifyObservers();
 	}
@@ -105,10 +114,10 @@ public class GameManager implements Subject
 		String piece = JOptionPane.showInputDialog("Which piece would you like to move?");
 		for (int i = 0; i < 64; i++)
 		{
-			if (piece == gridSpaces[i])
+			/*if (piece == gridSpaces[i])
 			{
 				//if (gridSpaces[i].is)
-			}
+			}*/
 		}
 	}
 	
@@ -119,16 +128,15 @@ public class GameManager implements Subject
 		for (int i = 0; i < 64; i++)
 		{
 			if (i % 8 == 0)
-				output += "\n" + gridSpaces[i];
+				output += "\n" + gridSpaces[i].getName();
 			else
-				output += " " + gridSpaces[i] + " ";
+				output += gridSpaces[i].getName();
 		}
 		
 		for(Observer obs : observers)
 		{
 			obs.notify(output);
 		}
-		
 	}
 
 	public void addObserver(Observer obs) 

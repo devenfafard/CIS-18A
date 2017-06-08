@@ -1,7 +1,8 @@
 public class Queen extends Piece
 {
-	public Queen()
+	public Queen(String color)
 	{
-		piece = "Q";
+		super(color);
+		name = "Q|";
 	}
 }

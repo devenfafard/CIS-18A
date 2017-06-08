@@ -1,9 +1,9 @@
 import javax.swing.*;
-public class Board implements Observer
+public class GUIManager implements Observer
 {
 	GameManager sub = null;
 	
-	public Board()
+	public GUIManager()
 	{
 		sub = new GameManager().getInstance();
 		sub.addObserver(this);

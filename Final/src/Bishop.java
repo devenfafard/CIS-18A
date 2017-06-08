@@ -1,8 +1,9 @@
 
 public class Bishop extends Piece
 {
-	public Bishop()
+	public Bishop(String color)
 	{
-		name = "B";
+		super(color);
+		name = "B|";
 	}
 }

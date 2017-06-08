@@ -1,7 +1,8 @@
 public class Knight extends Piece
 {
-	public Knight()
+	public Knight(String color)
 	{
-		piece = "K";
+		super(color);
+		name = "K|";
 	}
 }

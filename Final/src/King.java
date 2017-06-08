@@ -1,7 +1,8 @@
 public class King extends Piece
 {
-	public King()
+	public King(String color)
 	{
-		piece = "Ki";
+		super(color);
+		name = "K|";
 	}
 }
