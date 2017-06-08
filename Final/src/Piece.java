@@ -1,15 +1,26 @@
 public abstract class Piece
 {
-	String piece = "piece";
+	String name = "piece";
 	boolean isCaptured = false;
+	boolean isWhite = true;
 
-	public String getPiece()
+	public Piece getPiece()
 	{
-		return piece;
+		return this;
+	}
+	
+	public String getName()
+	{
+		return this.name;
 	}
 	
 	void capture()
 	{
 		isCaptured = true;
+	}
+	
+	void setColor(boolean color)
+	{
+		isWhite = color;
 	}
 }

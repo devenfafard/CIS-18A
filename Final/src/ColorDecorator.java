@@ -1,4 +1,4 @@
-public abstract class ColorDecorator
+public abstract class ColorDecorator extends Piece
 {
-	public abstract String getColor();
+	public abstract String getFullName();
 }

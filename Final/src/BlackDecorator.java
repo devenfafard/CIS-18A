@@ -1,14 +1,15 @@
-public class BlackDecorator
+public class BlackDecorator extends ColorDecorator
 {
 	Piece piece = null;
 	
 	public BlackDecorator(Piece p)
 	{
 		this.piece = p;
+		piece.setColor(false);
 	}
 	
-	public String getPiece()
+	public String getFullName()
 	{
-		return "b" + piece.getPiece();
+		return "w" + piece.getName();
 	}
 }

@@ -3,6 +3,9 @@ public class Main
 {
 	public static void main(String[] args)
 	{
-		GUIManager guiManager = new GUIManager();
+		GameManager gameManager = new GameManager().getInstance();
+		Board board = new Board();
+		
+		gameManager.initGame();
 	}
 }

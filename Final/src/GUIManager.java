@@ -1,13 +1,15 @@
 import javax.swing.*;
-public class GUIManager implements Observer
+public class Board implements Observer
 {
+	GameManager sub = null;
 	
-	public GUIManager()
+	public Board()
 	{
-		GameManager gm = new GameManager().getInstance();
-		gm.addObserver(this);
+		sub = new GameManager().getInstance();
+		sub.addObserver(this);
 	}
-	//Update GUI
+	
+	//Update board
 	public void notify(String output) 
 	{
 		JOptionPane.showMessageDialog(null, output);
